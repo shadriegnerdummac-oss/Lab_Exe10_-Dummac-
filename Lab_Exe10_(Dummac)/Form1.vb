@@ -52,6 +52,12 @@ Public Class Form1
                 ListBox1.Items.Add(number.ToString())
             Next
 
+            Using writer As New StreamWriter(numfile, False) ' Overwrite the file
+                For Each number As Decimal In sortedNumbers
+                    writer.WriteLine(number.ToString())
+                Next
+            End Using
+
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
